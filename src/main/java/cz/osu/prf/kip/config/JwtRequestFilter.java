@@ -1,6 +1,6 @@
 package cz.osu.prf.kip.config;
 
-import java.io.Console;
+
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
