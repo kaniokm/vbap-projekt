@@ -9,7 +9,7 @@ public class JwtRequest implements Serializable {
 	private String username;
 	private String password;
 	
-	// pro JSON parsing je potřeba bezparametrický konstruktor
+
 	public JwtRequest()
 	{
 		

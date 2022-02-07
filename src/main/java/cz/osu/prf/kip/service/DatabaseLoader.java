@@ -27,10 +27,6 @@ public class DatabaseLoader implements CommandLineRunner {
         this.staffMemberRepository = staffMemberRepository;
     }
 
-
-
-
-
     @Override
     public void run(String... strings) throws Exception {
         log.info("Loaded leagues: " + this.leagueRepository.count());

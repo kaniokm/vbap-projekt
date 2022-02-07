@@ -10,9 +10,7 @@ public class StaffMember {
     private String name;
     private String surname;
     private String role;
-    /*@ManyToOne
-    @JoinColumn(name = "team_id", insertable = false, updatable = false)
-    public Team team;*/
+
 
     public StaffMember() {
     }

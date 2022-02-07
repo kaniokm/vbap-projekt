@@ -7,9 +7,7 @@ public class Player {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
     private String name;
     private String surname;
-    /*@ManyToOne
-    @JoinColumn(name = "team_id", insertable = false, updatable = false)
-    public Team team;*/
+
 
     public Player() {
     }
