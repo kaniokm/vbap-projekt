@@ -18,9 +18,11 @@ import java.util.List;
 @CrossOrigin
 public class TeamController{
     @Autowired
-    TeamRepository teamRepository;
-    PlayerRepository playerRepository;
-    StaffMemberRepository staffMemberRepository;
+    private TeamRepository teamRepository;
+    @Autowired
+    private PlayerRepository playerRepository;
+    @Autowired
+    private StaffMemberRepository staffMemberRepository;
 
 
     public TeamController(TeamRepository teamRepository, PlayerRepository playerRepository, StaffMemberRepository staffMemberRepository) {
@@ -37,11 +39,12 @@ public class TeamController{
         return (List<Team>) teamRepository.findAll();
     }
 
-    @GetMapping("/teams/{id}")
-    Team getbyId(@PathVariable Long teamId)
+    @GetMapping("/team/{teamId}")
+    Team getById(@PathVariable Long teamId)
     {
 
-        return teamRepository.findById(teamId).orElseThrow(() -> new ResourceNotFoundException("Team not found with id: "+ teamId));
+        return teamRepository.findById(teamId)
+                .orElseThrow(() -> new ResourceNotFoundException("Team not found with id: "+ teamId));
     }
 
 
@@ -74,6 +77,20 @@ public class TeamController{
                 .orElseThrow(() -> new ResourceNotFoundException("Staff member not found with id: "+ staffMemberId));
         team.addStaffMember(staffMember);
         return teamRepository.save(team);
+    }
+
+    @PutMapping("/team/{teamId}")
+    Team updateTeamById(@PathVariable Long teamId, @RequestBody Team teamDetails)
+    {
+        Team team = teamRepository.findById(teamId).orElseThrow(()-> new ResourceNotFoundException("Team not found with id: "+ teamId));
+        team.setName(teamDetails.getName());
+        team.setLeagues(teamDetails.getLeagues());
+        team.setPlayers(teamDetails.getPlayers());
+        team.setStaffMembers(teamDetails.getStaffMembers());
+        Team updatedTeam = teamRepository.save(team);
+
+        return updatedTeam;
+
     }
 
 }

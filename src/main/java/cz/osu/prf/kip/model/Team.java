@@ -4,6 +4,7 @@ package cz.osu.prf.kip.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -23,6 +24,8 @@ public class Team {
     @ManyToMany(mappedBy = "teams")
     @JsonIgnore
     private List<League> leagues;
+
+
 
 
     public Team() {

@@ -10,17 +10,15 @@ public class StaffMember {
     private String name;
     private String surname;
     private String role;
+    @ManyToOne
+    @JoinColumn(name = "ts_fk", insertable = false, updatable = false)
+    private Team team;
 
 
     public StaffMember() {
     }
 
-    public StaffMember(String name, String surname, String role) {
-        this.name = name;
-        this.surname = surname;
-        this.role = role;
 
-    }
 
     public long getId() {
         return id;

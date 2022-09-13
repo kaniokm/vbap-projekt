@@ -13,7 +13,7 @@ import java.util.List;
 @CrossOrigin
 public class StaffMemberController {
     @Autowired
-    StaffMemberRepository staffMemberRepository;
+    private StaffMemberRepository staffMemberRepository;
     StaffMemberController(StaffMemberRepository staffMemberRepository){this.staffMemberRepository = staffMemberRepository;}
 
     @CrossOrigin(origins = "http://localhost:3000")

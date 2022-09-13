@@ -16,8 +16,9 @@ import java.util.List;
 @CrossOrigin
 public class LeagueController {
     @Autowired
-    LeagueRepository leagueRepository;
-    TeamRepository teamRepository;
+    private LeagueRepository leagueRepository;
+    @Autowired
+    private TeamRepository teamRepository;
 
     public LeagueController(LeagueRepository leagueRepository, TeamRepository teamRepository) {
         this.leagueRepository = leagueRepository;
@@ -32,8 +33,8 @@ public class LeagueController {
         return (List<League>) leagueRepository.findAll();
     }
 
-    @GetMapping("/league/{id}")
-    League getbyId(@PathVariable Long leagueId)
+    @GetMapping("/league/{leagueId}")
+    League getById(@PathVariable Long leagueId)
     {
 
         return leagueRepository.findById(leagueId).orElseThrow(() -> new ResourceNotFoundException("League not found with id: "+ leagueId));

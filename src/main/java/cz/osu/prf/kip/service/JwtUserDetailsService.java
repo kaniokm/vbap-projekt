@@ -1,3 +1,4 @@
+
 package cz.osu.prf.kip.service;
 
 import java.util.ArrayList;

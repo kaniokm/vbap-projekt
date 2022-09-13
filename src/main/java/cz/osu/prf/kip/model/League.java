@@ -5,6 +5,7 @@ package cz.osu.prf.kip.model;
 
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -16,13 +17,16 @@ public class League {
     private String name;
 
 
+
     @ManyToMany
     @JoinTable(
             name = "teams_in_league",
             joinColumns = @JoinColumn(name = "league_id"),
-            inverseJoinColumns = @JoinColumn(name="team_id")    )
+            inverseJoinColumns = @JoinColumn(name="team_id"))
 
     private List<Team> teams;
+
+
 
 
     public League() {
