@@ -1,6 +1,8 @@
 # Football team database backend
 
-Spring Boot backend for football team database React webapp written in Java using MySQL database with Spring security.
+Spring Boot backend for football team database using MySQL database. API secured by JWT token.
 
-Technology:
+Architecture:
 ![image](https://user-images.githubusercontent.com/79103806/188279502-0baf7777-5dbc-43fd-90c7-92a59b25ba86.png)
+E-R Diagram
+![entityManagerFactory(EntityManagerFactoryBuilder)](https://user-images.githubusercontent.com/79103806/189956155-86cb6ad0-9e87-46a1-a635-a52cab2be99a.png)
