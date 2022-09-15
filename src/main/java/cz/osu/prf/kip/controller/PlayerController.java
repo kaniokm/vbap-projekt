@@ -53,13 +53,7 @@ public class PlayerController {
         return player;
     }
 
-    @GetMapping("/player1")
-    Player getPlayerById()
-    {
-        int xd = 1;
-        Player player = playerRepository.findById((long) xd).orElseThrow(() -> new ResourceNotFoundException("Player not exists with id: 1"));
-        return player;
-    }
+
 
 
     @PutMapping("/player/{id}")
