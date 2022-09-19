@@ -22,6 +22,15 @@ public class PlayerController {
     PlayerController(PlayerRepository playerRepository){this.playerRepository = playerRepository;}
 
 
+    @GetMapping("/player/{id}")
+    Long getPlayerTeamId(@PathVariable Long id)
+    {
+        Player player = playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not exists with id: "+id));
+        return player.getTeam().getId();
+    }
+
+
+
     @GetMapping("/players")
     Iterable<Player> all()
     {

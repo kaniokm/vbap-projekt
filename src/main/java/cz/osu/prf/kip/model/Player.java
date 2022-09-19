@@ -1,5 +1,7 @@
 package cz.osu.prf.kip.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
@@ -12,6 +14,7 @@ public class Player {
     private Date dateOfBirth;
     @ManyToOne()
     @JoinColumn(name = "tp_fk",insertable = false, updatable = false)
+    @JsonIgnore
     private Team team;
 
     @Enumerated(EnumType.ORDINAL)
