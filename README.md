@@ -5,5 +5,6 @@ You will need MySQL database for this to run. You can make one in docker with "d
 
 Architecture:
 ![image](https://user-images.githubusercontent.com/79103806/188279502-0baf7777-5dbc-43fd-90c7-92a59b25ba86.png)
-E-R Diagram
+
+E-R Diagram:
 ![entityManagerFactory(EntityManagerFactoryBuilder)](https://user-images.githubusercontent.com/79103806/189956155-86cb6ad0-9e87-46a1-a635-a52cab2be99a.png)
