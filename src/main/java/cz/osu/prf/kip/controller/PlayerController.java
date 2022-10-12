@@ -22,11 +22,14 @@ public class PlayerController {
     PlayerController(PlayerRepository playerRepository){this.playerRepository = playerRepository;}
 
 
-    @GetMapping("/playerTeam/{id}")
-    Long getPlayerTeamId(@PathVariable Long id)
+   @GetMapping("/playerTeam/{id}")
+    String getPlayerTeamName(@PathVariable Long id)
     {
         Player player = playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not exists with id: "+id));
-        return player.getTeam().getId();
+        if (player.getTeam() == null)
+        return "Free player";
+        else
+        return player.getTeam().getName();
     }
 
 
@@ -42,10 +45,9 @@ public class PlayerController {
     Date getLocalDateById(@PathVariable Long id)
     {
         Player player = playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not exists with id: "+id));
-        Date localDate = player.getDateOfBirth();
 
 
-        return localDate;
+        return player.getDateOfBirth();
     }
 
 
@@ -58,8 +60,7 @@ public class PlayerController {
     @GetMapping("/player/{id}")
     Player getPlayerById(@PathVariable Long id)
     {
-        Player player = playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not exists with id: "+id));
-        return player;
+        return playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not exists with id: "+id));
     }
 
 
@@ -73,6 +74,7 @@ public class PlayerController {
         player.setName(playerDetails.getName());
         player.setSurname(playerDetails.getSurname());
         player.setDateOfBirth(playerDetails.getDateOfBirth());
+        player.setPosition(playerDetails.getPosition());
 
 
         Player updatedPlayer = playerRepository.save(player);
@@ -80,7 +82,7 @@ public class PlayerController {
         return updatedPlayer;
     }
 
-    @DeleteMapping("/playerdel/{id}")
+    @DeleteMapping("/player/{id}")
     public ResponseEntity<Map<String, Boolean>> deletePlayer(@PathVariable Long id){
 
         Player player = playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not exists with id: "+id));

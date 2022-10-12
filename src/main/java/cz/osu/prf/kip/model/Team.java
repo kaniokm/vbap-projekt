@@ -2,6 +2,8 @@ package cz.osu.prf.kip.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -16,6 +18,7 @@ public class Team {
     private String name;
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "tp_fk",referencedColumnName = "id")
+    @JsonManagedReference
     private List<Player> players;
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "ts_fk",referencedColumnName = "id")

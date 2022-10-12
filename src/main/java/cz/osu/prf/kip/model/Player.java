@@ -1,6 +1,8 @@
 package cz.osu.prf.kip.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,8 +16,10 @@ public class Player {
     private Date dateOfBirth;
     @ManyToOne()
     @JoinColumn(name = "tp_fk",insertable = false, updatable = false)
-    @JsonIgnore
+    @JsonBackReference
     private Team team;
+
+
 
     @Enumerated(EnumType.ORDINAL)
     private Position position;
@@ -25,6 +29,8 @@ public class Player {
 
     public Player() {
     }
+
+
 
 
     public Team getTeam() {
